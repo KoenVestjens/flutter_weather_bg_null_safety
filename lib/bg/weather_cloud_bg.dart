@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_weather_bg_null_safety/bg/weather_bg.dart';
 import 'package:flutter_weather_bg_null_safety/utils/image_utils.dart';
 import 'package:flutter_weather_bg_null_safety/utils/print_utils.dart';
-import 'package:flutter_weather_bg_null_safety/utils/weather_type.dart';
+import 'package:flutter_weather_bg_null_safety/utils/special_effect.dart';
 
 //// 专门负责绘制背景云层
 //// 会根据不同的天气类型，选择需要绘制的图片类型，并控制缩放、渐变、位移以及染色，最终显示在屏幕上
 class WeatherCloudBg extends StatefulWidget {
-  final WeatherType weatherType;
+  final SpecialEffect weatherType;
 
   WeatherCloudBg({Key? key, required this.weatherType}) : super(key: key);
 
@@ -62,7 +62,7 @@ class _WeatherCloudBgState extends State<WeatherCloudBg> {
 class BgPainter extends CustomPainter {
   final _paint = Paint();
   final List<ui.Image> images;
-  final WeatherType weatherType;
+  final SpecialEffect weatherType;
   final widthRatio;
   final width;
 
@@ -74,44 +74,44 @@ class BgPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     if (images.isNotEmpty) {
       switch (weatherType) {
-        case WeatherType.sunny:
+        case SpecialEffect.sunny:
           drawSunny(canvas, size);
           break;
-        case WeatherType.cloudy:
+        case SpecialEffect.cloudy:
           drawCloudy(canvas, size);
           break;
-        case WeatherType.cloudyNight:
+        case SpecialEffect.cloudyNight:
           drawCloudyNight(canvas, size);
           break;
-        case WeatherType.overcast:
+        case SpecialEffect.overcast:
           drawOvercast(canvas, size);
           break;
-        case WeatherType.lightRainy:
+        case SpecialEffect.lightRainy:
           drawLightRainy(canvas, size);
           break;
-        case WeatherType.middleRainy:
+        case SpecialEffect.middleRainy:
           drawMiddleRainy(canvas, size);
           break;
-        case WeatherType.heavyRainy:
-        case WeatherType.thunder:
+        case SpecialEffect.heavyRainy:
+        case SpecialEffect.thunder:
           drawHeavyRainy(canvas, size);
           break;
-        case WeatherType.hazy:
+        case SpecialEffect.hazy:
           drawHazy(canvas, size);
           break;
-        case WeatherType.foggy:
+        case SpecialEffect.foggy:
           drawFoggy(canvas, size);
           break;
-        case WeatherType.lightSnow:
+        case SpecialEffect.lightSnow:
           drawLightSnow(canvas, size);
           break;
-        case WeatherType.middleSnow:
+        case SpecialEffect.middleSnow:
           drawMiddleSnow(canvas, size);
           break;
-        case WeatherType.heavySnow:
+        case SpecialEffect.heavySnow:
           drawHeavySnow(canvas, size);
           break;
-        case WeatherType.dusty:
+        case SpecialEffect.dusty:
           drawDusty(canvas, size);
           break;
         default:

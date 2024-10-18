@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_weather_bg_null_safety/bg/weather_bg.dart';
 import 'package:flutter_weather_bg_null_safety/utils/image_utils.dart';
 import 'package:flutter_weather_bg_null_safety/utils/print_utils.dart';
-import 'package:flutter_weather_bg_null_safety/utils/weather_type.dart';
+import 'package:flutter_weather_bg_null_safety/utils/special_effect.dart';
 
 //// 雨雪动画层
 class WeatherRainSnowBg extends StatefulWidget {
-  final WeatherType weatherType;
+  final SpecialEffect weatherType;
   final double viewWidth;
   final double viewHeight;
 
@@ -52,18 +52,18 @@ class _WeatherRainSnowBgState extends State<WeatherRainSnowBg>
       weatherPrint(
           "开始雨参数初始化 ${_rainSnows.length}， weatherType: ${widget.weatherType}, isRainy: ${WeatherUtil.isRainy(widget.weatherType)}");
       if (WeatherUtil.isSnowRain(widget.weatherType)) {
-        if (widget.weatherType == WeatherType.lightRainy) {
+        if (widget.weatherType == SpecialEffect.lightRainy) {
           count = 70;
-        } else if (widget.weatherType == WeatherType.middleRainy) {
+        } else if (widget.weatherType == SpecialEffect.middleRainy) {
           count = 100;
-        } else if (widget.weatherType == WeatherType.heavyRainy ||
-            widget.weatherType == WeatherType.thunder) {
+        } else if (widget.weatherType == SpecialEffect.heavyRainy ||
+            widget.weatherType == SpecialEffect.thunder) {
           count = 200;
-        } else if (widget.weatherType == WeatherType.lightSnow) {
+        } else if (widget.weatherType == SpecialEffect.lightSnow) {
           count = 30;
-        } else if (widget.weatherType == WeatherType.middleSnow) {
+        } else if (widget.weatherType == SpecialEffect.middleSnow) {
           count = 100;
-        } else if (widget.weatherType == WeatherType.heavySnow) {
+        } else if (widget.weatherType == SpecialEffect.heavySnow) {
           count = 200;
         }
         var size = SizeInherited.of(context)?.size;
@@ -271,7 +271,7 @@ class RainSnowParams {
   late double alpha;
 
   /// 天气类型
-  WeatherType weatherType;
+  SpecialEffect weatherType;
 
   late double widthRatio;
   late double heightRatio;
@@ -291,18 +291,18 @@ class RainSnowParams {
   void reset() {
     double ratio = 1.0;
 
-    if (weatherType == WeatherType.lightRainy) {
+    if (weatherType == SpecialEffect.lightRainy) {
       ratio = 0.5;
-    } else if (weatherType == WeatherType.middleRainy) {
+    } else if (weatherType == SpecialEffect.middleRainy) {
       ratio = 0.75;
-    } else if (weatherType == WeatherType.heavyRainy ||
-        weatherType == WeatherType.thunder) {
+    } else if (weatherType == SpecialEffect.heavyRainy ||
+        weatherType == SpecialEffect.thunder) {
       ratio = 1;
-    } else if (weatherType == WeatherType.lightSnow) {
+    } else if (weatherType == SpecialEffect.lightSnow) {
       ratio = 0.5;
-    } else if (weatherType == WeatherType.middleSnow) {
+    } else if (weatherType == SpecialEffect.middleSnow) {
       ratio = 0.75;
-    } else if (weatherType == WeatherType.heavySnow) {
+    } else if (weatherType == SpecialEffect.heavySnow) {
       ratio = 1;
     }
     if (WeatherUtil.isRainy(weatherType)) {

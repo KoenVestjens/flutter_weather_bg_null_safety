@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_weather_bg_null_safety/bg/weather_bg.dart';
 import 'package:flutter_weather_bg_null_safety/flutter_weather_bg.dart';
 import 'package:flutter_weather_bg_null_safety/utils/print_utils.dart';
-import 'package:flutter_weather_bg_null_safety/utils/weather_type.dart';
+import 'package:flutter_weather_bg_null_safety/utils/special_effect.dart';
 
 //// 晴晚&流星层
 class WeatherNightStarBg extends StatefulWidget {
-  final WeatherType weatherType;
+  final SpecialEffect weatherType;
 
   WeatherNightStarBg({Key? key, required this.weatherType}) : super(key: key);
 
@@ -76,7 +76,7 @@ class _WeatherNightStarBgState extends State<WeatherNightStarBg>
 
   Widget _buildWidget() {
     if (_starParams.isNotEmpty &&
-        widget.weatherType == WeatherType.sunnyNight) {
+        widget.weatherType == SpecialEffect.sunnyNight) {
       return CustomPaint(
         painter:
             _StarPainter(_starParams, _meteorParams, width, height, widthRatio),

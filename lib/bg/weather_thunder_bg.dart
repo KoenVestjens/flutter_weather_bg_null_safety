@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_weather_bg_null_safety/bg/weather_bg.dart';
 import 'package:flutter_weather_bg_null_safety/utils/image_utils.dart';
 import 'package:flutter_weather_bg_null_safety/utils/print_utils.dart';
-import 'package:flutter_weather_bg_null_safety/utils/weather_type.dart';
+import 'package:flutter_weather_bg_null_safety/utils/special_effect.dart';
 
 /// 雷暴动画层
 class WeatherThunderBg extends StatefulWidget {
-  final WeatherType weatherType;
+  final SpecialEffect weatherType;
 
   WeatherThunderBg({Key? key, required this.weatherType}) : super(key: key);
 
@@ -152,7 +152,7 @@ class _WeatherCloudBgState extends State<WeatherThunderBg>
   Widget _buildWidget() {
     // 这里需要判断天气类别信息，防止不需要绘制的时候绘制，影响性能
     if (_thunderParams.isNotEmpty &&
-        widget.weatherType == WeatherType.thunder) {
+        widget.weatherType == SpecialEffect.thunder) {
       return CustomPaint(
         painter: ThunderPainter(_thunderParams),
       );
